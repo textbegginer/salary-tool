@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>연봉 실수령 & 목표달성 계산기</title>
+<title>연봉 실수령 & 목표달성 계산기 (2026)</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -150,7 +150,7 @@
 <body>
 <div class="container">
   <div class="page-title">연봉 계산기</div>
-  <div class="page-sub">실수령액 · 세금 내역 · 목표 달성 기간을 계산합니다</div>
+  <div class="page-sub">실수령액 · 세금 내역 · 목표 달성 기간을 계산합니다 · 2026년 기준</div>
 
   <div class="tabs">
     <div class="tab active" onclick="switchTab('tax', this)">연봉 실수령액</div>
@@ -187,12 +187,12 @@
         <table><thead><tr><th>항목</th><th style="text-align:right">연간</th><th style="text-align:right">월</th></tr></thead><tbody id="t-bd-body"></tbody></table>
       </div>
       <div class="card">
-        <div class="card-title">소득세 과세표준 구간 (2024)</div>
+        <div class="card-title">소득세 과세표준 구간 (2026)</div>
         <table><thead><tr><th>과세표준</th><th>세율</th><th style="text-align:right">해당 세액</th></tr></thead><tbody id="t-bk-body"></tbody></table>
       </div>
     </div>
 
-    <p class="note">* 본인 단독 기준. 기본공제·4대보험 소득공제 외 추가공제(신용카드·의료비 등) 미적용. 실제 세액과 차이 있을 수 있습니다.</p>
+    <p class="note">* 본인 단독 기준. 기본공제·4대보험 소득공제 외 추가공제(신용카드·의료비 등) 미적용. 2026년 4대보험 요율 기준(국민연금 4.75%, 건강보험 3.595%, 장기요양 13.14%). 실제 세액과 차이 있을 수 있습니다.</p>
   </div>
 
   <!-- ===== GOAL PANEL ===== -->
@@ -231,10 +231,10 @@
       <div style="margin-top:.8rem" id="g-stk-wrap"></div>
     </div>
 
-    <p class="note">* 연봉 세후 실수령 기준(2024 세법 적용). 매월 초 저축·투자 가정. 실제 결과는 세금·수수료·인플레이션에 따라 달라질 수 있습니다.</p>
+    <p class="note">* 연봉 세후 실수령 기준(2026년 4대보험 요율 적용). 매월 초 저축·투자 가정. 실제 결과는 세금·수수료·인플레이션에 따라 달라질 수 있습니다.</p>
   </div>
 
-  <footer>연봉 계산기 · 2024 세법 기준 · 참고용 자료이며 실제 세액과 차이가 있을 수 있습니다</footer>
+  <footer>연봉 계산기 · 2026년 세법 및 4대보험 요율 기준 · 참고용 자료이며 실제 세액과 차이가 있을 수 있습니다</footer>
 </div>
 
 <script>
@@ -270,9 +270,9 @@ const ITEMS = [
 
 function calcTaxFull(salary) {
   const mo = salary / 12;
-  const pension = Math.round(Math.min(mo, 5900000) * 0.045) * 12;
-  const health = Math.round(mo * 0.03545) * 12;
-  const ltc = Math.round((health / 12) * 0.1295) * 12;
+  const pension = Math.round(Math.min(mo, 5900000) * 0.0475) * 12;
+  const health = Math.round(mo * 0.03595) * 12;
+  const ltc = Math.round((health / 12) * 0.1314) * 12;
   const employ = Math.round(mo * 0.009) * 12;
   const ins = pension + health + ltc + employ;
   let ed;
